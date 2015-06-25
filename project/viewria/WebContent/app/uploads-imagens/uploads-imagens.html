@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-language" content="pt-br"/>
+        <meta name="robots" content="index, follow"/>
+        <meta name="author" content="Alberto Cerqueira"/>
+        <meta name="reply-to" content="alberto.cerqueira1990@gmail.com"/>
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="keywords" content="programador, java, ti, desenvolvedor, desenvolvimento, programação, api, framework, projeto"/>
+		<meta name="description" content="Spring Corp - Framework"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/form.css" />
+		
+    	<script type="text/javascript" src="../../js/jquery/jquery-1.7.2.min.js"></script>
+    	<script type="text/javascript" src="../../plugins/form/jquery.form.js"></script>
+    	<script type="text/javascript" src="../../plugins/jupload/jquery.upload-1.0.2.js"></script>
+    	<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="uploads-imagens.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				var _uploadsImagens = $.uploadsImagens();
+				_uploadsImagens.init();
+			});
+		</script>
+		
+		<title>Uploads Imagens</title>
+	</head>
+	<body>
+		<form id="uploadImagens" name="uploadImagens" method="post" action="">
+			<input type="hidden" id="webClassId" name="webClassId" value="uploadImagens" />
+			<input type="hidden" id="invoke" name="invoke" value="uploadImagens" />
+		  	
+		  	<h1>Uploads</h1>
+		  	<h2>Campos marcados com (*) são obrigatorios</h2>
+		  	
+		  	<fieldset>
+			   	<legend>Uploads Imagens</legend>
+				<ol>
+					<li>
+						<label for="Imagens">Imagens </label>
+						<div id="fileinputs">
+							<input type="file" multiple id="filesPath" name="filesPath" accept="image/*" />
+						</div>
+					</li>
+					<li>
+						<div id="imagens"></div>
+					</li>
+				</ol>
+			</fieldset>
+			<input type="button" id="upload" value="Upload" />
+		</form>
+	</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-language" content="pt-br"/>
+        <meta name="robots" content="index, follow"/>
+        <meta name="author" content="Alberto Cerqueira"/>
+        <meta name="reply-to" content="alberto.cerqueira1990@gmail.com"/>
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="keywords" content="programador, java, ti, desenvolvedor, desenvolvimento, programação, api, framework, projeto"/>
+		<meta name="description" content="Spring Corp - Framework"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/form.css" />
+		
+    	<script type="text/javascript" src="../../js/jquery/jquery-1.7.2.min.js"></script>
+    	<script type="text/javascript" src="../../plugins/form/jquery.form.js"></script>
+    	<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="controller.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				var _controller = $.controller();
+				_controller.init();
+			});
+		</script>
+		
+		<style type="text/css">
+			form {
+				width: 600px;
+			}
+			form fieldset input {
+				width: 210px;
+			}
+			form label {
+				width: 300px;
+			}
+		</style>
+		
+		<title>Manter Entidade</title>
+	</head>
+	<body>
+		<form id="manterEntidade" name="manterEntidade" method="post" action="">
+			<input type="hidden" id="webClassId" name="webClassId" value="manterEntidade"/>
+			<input type="hidden" id="invoke" name="invoke" value="manterEntidade"/>
+		  	
+		  	<h1>Manter Entidade</h1>
+		  	<h2>Campos marcados com (*) são obrigatorios</h2>
+		  	
+		  	<fieldset>
+			   	<legend>Bloco 1</legend>
+				<ol>
+					<li>
+						<label for="String (Only Letters)">* String (Only Letters): </label>
+						<input type="text" id="stringOnlyLetters" name="stringOnlyLetters" />
+					</li>
+					<li>
+						<label for="Integer">* Integer: </label>
+						<input type="text" id="integer" name="integer" />
+					</li>
+					<li>
+						<label for="Long">Long: </label>
+						<input type="text" id="long" name="long" />
+					</li>
+					<li>
+						<label for="BigDecimal (Formato 0,0000)">* BigDecimal (Formato 0,0000): </label>
+						<input type="text" id="bigDecimalFormato0000" name="bigDecimalFormato0000" />
+					</li>
+					<li>
+						<label for="Calendar">Calendar: </label>
+						<input type="text" id="calendar" name="calendar" />
+					</li>
+				</ol>
+			</fieldset>
+			<fieldset>
+			   	<legend>Bloco 2</legend>
+			   	<ol>
+					<li>
+						<label for="String (Only Numbers)">String (Only Numbers): </label>
+						<input type="text" id="stringOnlyNumbers" name="stringOnlyNumbers" />
+					</li>
+					<li>
+						<label for="Integer (+100 1000-)">Integer: </label>
+						<input type="text" id="integer" name="integer" />
+					</li>
+					
+					<li>
+						<label for="Long (+100 1000-)">* Long (+100 1000-): </label>
+						<input type="text" id="long100and1000" name="long100and1000" />
+					</li>
+					<li>
+						<label for="BigDecimal (+100,00 1000,00-)">BigDecimal (+100,00 1000,00-): </label>
+						<input type="text" id="bigDecimal100and1000" name="bigDecimal100and1000" />
+					</li>
+					<li>
+						<label for="Calendar (+23/06/1990 29/05/2015-)">* Calendar (+23/06/1990 29/05/2015-): </label>
+						<input type="text" id="calendar23061990and29052015" name="calendar23061990and29052015" />
+					</li>
+				</ol>
+			</fieldset>
+			<fieldset>
+			   	<legend>Bloco 3</legend>
+			   	<ol>
+					<li>
+						<label for="String (Only Letters Numbers)">* String (Only Letters Numbers): </label>
+						<input type="text" id="stringOnlyLettersNumbers" name="stringOnlyLettersNumbers" />
+					</li>
+					<li>
+						<label for="String (+100 1000-)">String (+100 1000-): </label>
+						<input type="text" id="string100and1000" name="string100and1000" />
+					</li>
+					
+					<li>
+						<label for="Email (100-)">Email (100-): </label>
+						<input type="text" id="email100" name="email100" />
+					</li>
+					<li>
+						<label for="Placa">* Placa: </label>
+						<input type="text" id="placa" name="placa" />
+					</li>
+					<li>
+						<label for="NCM">* NCM: </label>
+						<input type="text" id="ncm" name="NCM" />
+					</li>
+				</ol>
+			</fieldset>
+			<fieldset>
+			   	<legend>Lista</legend>
+			   	<ol>
+			   		<li>
+						<label for="Lista Strings">Lista Strings: </label>
+						<input type="text" id="listaStrings" name="listaStrings" value="alberto,cerqueira,github,programacao,java,brasil,saopaulo,spring,java,utils" />
+					</li>
+					<li>
+						<label for="Lista Integers">Lista Integers: </label>
+						<input type="text" id="listaIntegers" name="listaIntegers" value="1,2,3,4,5,6,7,8,9,0" />
+					</li>
+				</ol>
+			</fieldset>
+			<input type="button" id="gravar" value="Gravar" />
+		</form>
+	</body>
+</html>

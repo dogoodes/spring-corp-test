@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>App</display-name>
+	<filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>br.com.viewria.servlet.SecurityFilter</filter-class>
+	</filter>
+
+	<!-- Filter Mapping -->
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<servlet-name>Servlet</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<servlet-name>Attachment</servlet-name>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>Servlet</servlet-name>
+		<servlet-class>br.com.viewria.servlet.Servlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>UploadFile</servlet-name>
+		<servlet-class>br.com.viewria.servlet.UploadFileServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Attachment</servlet-name>
+		<servlet-class>br.com.viewria.servlet.AttachmentServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>Servlet</servlet-name>
+		<url-pattern>/servlet/servlet.app</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadFile</servlet-name>
+		<url-pattern>/servlet/upload.app</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Attachment</servlet-name>
+		<url-pattern>/servlet/attachment.app</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Pages Mapping -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.html</location>
+	</error-page>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:/META-INF/spring/datasource-context.xml
+			classpath:/META-INF/spring/aop-context.xml
+			classpath:/META-INF/spring/controller-context.xml
+			classpath:/META-INF/spring/cep-context.xml
+			classpath:/META-INF/spring/csv-context.xml
+			classpath:/META-INF/spring/email-context.xml
+			classpath:/META-INF/spring/thread-local-context.xml
+			classpath:/META-INF/spring/upload-context.xml
+			/WEB-INF/view-context.xml
+		</param-value>
+	</context-param>
+	<!--
+	<resource-ref>
+		<description>DataSource Connection</description>
+		<res-ref-name>jdbc/app</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	<resource-ref>
+		<description>MailSession</description>
+		<res-ref-name>mail/Session</res-ref-name>
+		<res-type>javax.mail.Session</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	-->
+</web-app>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-language" content="pt-br"/>
+        <meta name="robots" content="index, follow"/>
+        <meta name="author" content="Alberto Cerqueira"/>
+        <meta name="reply-to" content="alberto.cerqueira1990@gmail.com"/>
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="keywords" content="programador, java, ti, desenvolvedor, desenvolvimento, programação, api, framework, projeto"/>
+		<meta name="description" content="Spring Corp - Framework"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/form.css" />
+		
+    	<script type="text/javascript" src="../../js/jquery/jquery-1.7.2.min.js"></script>
+    	<script type="text/javascript" src="../../plugins/form/jquery.form.js"></script>
+    	<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="gerar-csv.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				var _gerarCSV = $.gerarCSV();
+				_gerarCSV.init();
+			});
+		</script>
+		
+		<title>Gerar CSV</title>
+	</head>
+	<body>
+		<form id="gerarCSV" name="gerarCSV" method="post" action="">
+			<input type="hidden" id="webClassId" name="webClassId" value="gerarCSV"/>
+			<input type="hidden" id="invoke" name="invoke" value="gerarCSV"/>
+			
+			<input type="hidden" id="string1" name="string1" value="alberto" />
+			<input type="hidden" id="string2" name="string2" value="cerqueira" />
+			<input type="hidden" id="integer" name="integer" value="1990" />
+			<input type="hidden" id="date" name="date" value="23/06/1990" />
+			<input type="hidden" id="bigdecimal" name="bigdecimal" value="1000.0000" />
+			<input type="hidden" id="long" name="long" value="9999" />
+			<input type="hidden" id="boolean" name="boolean" value="false" />
+		  	
+		  	<h1>CSV</h1>
+		  	<h2>Gerar CSV</h2>
+		  	
+		  	<br />
+		  	
+		  	<h2>Linha 1:</h2>
+		  	<h2>
+		  		String&nbsp;&nbsp;&nbsp;|
+		  		String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		Integer&nbsp;&nbsp;|
+		  		Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		BigDecimal |
+		  		Long |
+		  		Boolean |
+		  	</h2>
+		  	<h2>
+		  		alberto | 
+		  		cerqueira | 
+		  		1990&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		23/06/1990 |
+		  		1000.0000&nbsp;&nbsp;&nbsp;|
+		  		9999&nbsp;&nbsp;|
+		  		false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  	</h2>
+		  	
+		  	<br />
+		  	
+		  	<h2>Linha 2:</h2>
+		  	<h2>
+		  		Boolean |
+		  		Long |
+		  		BigDecimal |
+		  		Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		Integer&nbsp;&nbsp;|
+		  		String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		String&nbsp;&nbsp;&nbsp;|
+		  	</h2>
+		  	<h2>
+		  		false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		9999&nbsp;&nbsp;|
+		  		1000.0000&nbsp;&nbsp;&nbsp;|
+		  		23/06/1990 |
+		  		1990&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		cerqueira | 
+		  		alberto | 
+		  	</h2>
+		  	
+		  	<br />
+		  	
+		  	<h2>Linha 3:</h2>
+		  	<h2>
+		  		String&nbsp;&nbsp;&nbsp;|
+		  		String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		Integer&nbsp;&nbsp;|
+		  		Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		BigDecimal |
+		  		Long |
+		  		Boolean |
+		  	</h2>
+		  	<h2>
+		  		alberto | 
+		  		cerqueira | 
+		  		1990&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  		23/06/1990 |
+		  		1000.0000&nbsp;&nbsp;&nbsp;|
+		  		9999&nbsp;&nbsp;|
+		  		false&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+		  	</h2>
+		  	
+			<input type="button" id="gerar" value="gerar" />
+		</form>
+	</body>
+</html>

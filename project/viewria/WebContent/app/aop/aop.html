@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-language" content="pt-br"/>
+        <meta name="robots" content="index, follow"/>
+        <meta name="author" content="Alberto Cerqueira"/>
+        <meta name="reply-to" content="alberto.cerqueira1990@gmail.com"/>
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="keywords" content="programador, java, ti, desenvolvedor, desenvolvimento, programação, api, framework, projeto"/>
+		<meta name="description" content="Spring Corp - Framework"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/form.css" />
+		
+    	<script type="text/javascript" src="../../js/jquery/jquery-1.7.2.min.js"></script>
+    	<script type="text/javascript" src="../../plugins/form/jquery.form.js"></script>
+    	<script type="text/javascript" src="../../js/global.js"></script>
+		<script type="text/javascript" src="aop.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				var _aop = $.aop();
+				_aop.init();
+			});
+		</script>
+		
+		<title>Programação Orientada a Aspectos</title>
+	</head>
+	<body>
+		<form id="manterCliente" name="manterCliente" method="post" action="">
+			<input type="hidden" id="webClassId" name="webClassId" value="manterCliente"/>
+			<input type="hidden" id="invoke" name="invoke" value="inserir"/>
+		  	
+		  	<h1>AOP</h1>
+		  	<h2>Campos marcados com (*) são obrigatorios</h2>
+		  	
+		  	<fieldset>
+			   	<legend>Programação Orientada a Aspectos</legend>
+				<ol>
+					<li>
+						<label for="Código">Código </label>
+						<input type="text" id="codigo" name="codigo" />
+					</li>
+					<li>
+						<label for="Nome">Nome </label>
+						<input type="text" id="nome" name="nome" />
+					</li>
+				</ol>
+			</fieldset>
+			<input type="button" id="infoCliente" value="Info" />
+			<br /><br />
+			<input type="button" id="buscarCliente" value="Buscar" />
+			<br /><br />
+			<input type="button" id="inserirCliente" value="Inserir" />
+			<br /><br />
+			<input type="button" id="atualizarCliente" value="Atualizar" />
+			<br /><br />
+			<input type="button" id="inserirCliente" value="Excluir" />
+		</form>
+	</body>
+</html>
