@@ -84,16 +84,15 @@
 		</dependency>
 	</dependencies>
 	<modules>
-		<module>viewria</module>
 		<module>aop</module>
-		<module>cep</module>
-		<module>email</module>
-		<module>thread-local</module>
-		<module>controller</module>
-		<module>br.com.upload</module>
-		<module>upload</module>
-		<module>orm</module>
-		<module>csv</module>
 		<module>bo</module>
+		<module>cep</module>
+		<module>controller</module>
+		<module>csv</module>
+		<module>email</module>
+		<module>orm</module>
+		<module>thread-local</module>
+		<module>viewria</module>
+		<module>upload</module>
 	</modules>
 </project>
