@@ -92,7 +92,7 @@
 		<module>email</module>
 		<module>orm</module>
 		<module>thread-local</module>
-		<module>viewria</module>
 		<module>upload</module>
+		<module>viewria</module>
 	</modules>
 </project>
