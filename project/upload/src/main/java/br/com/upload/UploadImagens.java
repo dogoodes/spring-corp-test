@@ -9,13 +9,13 @@ import java.util.StringTokenizer;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import spring.corp.framework.configuracao.GerenciadorConfiguracao;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.configuracao.ManagerSetting;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.io.SerializableInputStream;
 import spring.corp.framework.json.Consequence;
 import spring.corp.framework.json.JSONFileAttachment;
 import spring.corp.framework.json.JSONReturn;
-import spring.corp.framework.log.GerenciadorLog;
+import spring.corp.framework.log.ManagerLog;
 import spring.corp.framework.utils.DateUtils;
 import spring.corp.framework.utils.StringUtils;
 import spring.corp.framework.view.GerenciadorUpload;
@@ -36,11 +36,11 @@ public class UploadImagens {
 	}
 	
 	public JSONReturn recuperarArquivo(ServletRequest request, ServletResponse response, String fileName) {
-		GerenciadorLog.debug(UploadImagens.class, ("Upload de imagem : " + fileName));
+		ManagerLog.debug(UploadImagens.class, ("Upload de imagem : " + fileName));
 		JSONFileAttachment jsonFileAttachment = GerenciadorUpload.recuperarArquivo(request, response, fileName);
 		try {
 			SerializableInputStream serializableInputStream = (SerializableInputStream) jsonFileAttachment.getFile();
-			String pasta = GerenciadorConfiguracao.getConfiguracao("diretorio.upload");
+			String pasta = ManagerSetting.getSetting("diretorio.upload");
 			pasta = pasta.replaceAll("\\$\\{pastausuario\\}", nomePasta);
 			 
 			File pastaFisica = new File(pasta);
@@ -56,8 +56,8 @@ public class UploadImagens {
 						File newChildFolder = new File(path);
 						if (!newChildFolder.exists()) {
 							if (!newChildFolder.mkdir()) {
-								String message = GerenciadorMensagem.getMessage("upload.diretorio.nao.criado", newChildFolder.getPath());
-								GerenciadorLog.critical(UploadImagens.class, message);
+								String message = ManagerMessage.getMessage("upload.diretorio.nao.criado", newChildFolder.getPath());
+								ManagerLog.critical(UploadImagens.class, message);
 							}
 						}
 					}

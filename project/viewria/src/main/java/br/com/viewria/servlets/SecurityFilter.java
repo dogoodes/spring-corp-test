@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import spring.corp.framework.configuracao.GerenciadorConfiguracao;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.configuracao.ManagerSetting;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.json.Consequence;
 import spring.corp.framework.json.JSONReturn;
 import spring.corp.framework.security.SecurityConstants;
@@ -75,7 +75,7 @@ public class SecurityFilter implements Filter {
 		String webClassId = request.getParameter("webClassId");
 		if (webClassId == null) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			String message = GerenciadorMensagem.getMessage("view.webclassid.nao.informado");
+			String message = ManagerMessage.getMessage("view.webclassid.nao.informado");
 			httpResponse.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
 			return;
 		}
@@ -139,25 +139,25 @@ public class SecurityFilter implements Filter {
 	}
 	*/
 	private void semAccesso(ServletRequest request, ServletResponse response) throws IOException{
-		String message = GerenciadorMensagem.getMessage("view.security.login.null");
+		String message = ManagerMessage.getMessage("view.security.login.null");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String context = GerenciadorConfiguracao.getConfiguracao("contexto");
+		String context = ManagerSetting.getSetting("contexto");
 		JSONReturn jsonReturn = JSONReturn.newInstance(Consequence.SEM_ACESSO).message(message).page(context + "/" + "index.html");
 		out.print(jsonReturn.serialize());
 	}
 	
 	private void acessoRestrito(ServletRequest request, ServletResponse response) throws IOException {
-		String message = GerenciadorMensagem.getMessage("view.screen.screen.nao.autorizado");
-		writeError(request, response, message, GerenciadorConfiguracao.getConfiguracao("mainUrl"));
+		String message = ManagerMessage.getMessage("view.screen.screen.nao.autorizado");
+		writeError(request, response, message, ManagerSetting.getSetting("mainUrl"));
 	}
 	
 	private void writeError(ServletRequest request, ServletResponse response, String message, String redirectPath) throws IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String contexto = GerenciadorConfiguracao.getConfiguracao("contexto");
+		String contexto = ManagerSetting.getSetting("contexto");
 		JSONReturn jsonReturn = JSONReturn.newInstance(Consequence.ERRO).message(message).page(contexto + "/" + redirectPath);
 		out.print(jsonReturn.serialize());
 	}

@@ -9,7 +9,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.json.Consequence;
 import spring.corp.framework.json.JSONFileAttachment;
 import spring.corp.framework.json.JSONReturn;
@@ -67,7 +67,7 @@ public class GerarCSV {
 		HttpSession session = ((HttpServletRequest) request).getSession(true);
 		session.setAttribute(jsonFileAttachment.getFileName(), jsonFileAttachment);
 		
-		String message = GerenciadorMensagem.getMessage("arquivo.criar", "csv");
+		String message = ManagerMessage.getMessage("arquivo.criar", "csv");
 		return JSONReturn.newInstance(Consequence.SUCESSO, jsonFileAttachment).message(message);
 	}
 }

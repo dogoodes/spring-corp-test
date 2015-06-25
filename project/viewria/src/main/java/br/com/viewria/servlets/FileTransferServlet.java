@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import spring.corp.framework.configuracao.GerenciadorConfiguracao;
+import spring.corp.framework.configuracao.ManagerSetting;
 import spring.corp.framework.exceptions.UserException;
 import spring.corp.framework.ftp.FileTransferTicketsStatus;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.io.ProgressFileGeneration;
 import spring.corp.framework.json.JSONReturn;
-import spring.corp.framework.log.GerenciadorLog;
+import spring.corp.framework.log.ManagerLog;
 import spring.corp.framework.utils.StringUtils;
 
 public class FileTransferServlet extends AbstractServlet<Void> {
@@ -30,8 +30,8 @@ public class FileTransferServlet extends AbstractServlet<Void> {
 	public static final int SEND_FILE = 3;
 	public static final int CLOSE_CHANNEL = 4;
 	public static final int WAIT_TO_SEND_FILE = 5;
-	public int maxRequestToImport = Integer.parseInt( GerenciadorConfiguracao.getConfiguracao("MAX_REQUEST_TO_IMPORT") );
-	public int maxWaitProcess = Integer.parseInt( GerenciadorConfiguracao.getConfiguracao("MAX_WAIT_PROCESS"));
+	public int maxRequestToImport = Integer.parseInt( ManagerSetting.getSetting("MAX_REQUEST_TO_IMPORT") );
+	public int maxWaitProcess = Integer.parseInt( ManagerSetting.getSetting("MAX_WAIT_PROCESS"));
 	public volatile int requestToImport = 0;
 	
     public void service(HttpServletRequest request, HttpServletResponse response) {
@@ -113,7 +113,7 @@ public class FileTransferServlet extends AbstractServlet<Void> {
 		        					if (fileProcessedOrMaximumRetriesExceeded(fileProcessed, wftpStatus)) {
 		        						if (isMaximumRetriesExceeded(wftpStatus)) {
 		        							wftpStatus.addQtFilesNotProcessed(); 
-		        							GerenciadorLog.debug(FileTransferServlet.class, "ERRO: O ARQUIVO [" + wftpStatus.getFileName() + "] NAO SERA PROCESSADO");
+		        							ManagerLog.debug(FileTransferServlet.class, "ERRO: O ARQUIVO [" + wftpStatus.getFileName() + "] NAO SERA PROCESSADO");
 		        							request.setAttribute("ticket", wftpStatus.getTicket());
 		        							request.setAttribute("fileContent", null);
 		        							request.setAttribute("fileName", wftpStatus.getFileName());
@@ -138,7 +138,7 @@ public class FileTransferServlet extends AbstractServlet<Void> {
 	                					out.flush();
 		        						break;
 		        					} else if (tryReceiveFileAgain(fileProcessed, wftpStatus)) {
-		        						GerenciadorLog.debug(FileTransferServlet.class, "ERRO: TENTANDO RECEBER O ARQUIVO: [" + wftpStatus.getFileName() + "]");
+		        						ManagerLog.debug(FileTransferServlet.class, "ERRO: TENTANDO RECEBER O ARQUIVO: [" + wftpStatus.getFileName() + "]");
 		        						//tenta enviar de novo
 		        						wftpStatus.addRetryFileReceived();
 		    							wftpStatus.setStatus(SEND_FILE);
@@ -154,7 +154,7 @@ public class FileTransferServlet extends AbstractServlet<Void> {
         	}
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (IOException e) {
-        	GerenciadorLog.error(FileTransferServlet.class, e);
+        	ManagerLog.error(FileTransferServlet.class, e);
             try {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 response.getWriter().print(e.getMessage());
@@ -181,7 +181,7 @@ public class FileTransferServlet extends AbstractServlet<Void> {
     }
     
     protected void readFullHeader(FileTransferTicketsStatus wftpStatus, String fromClient) throws IOException {
-		GerenciadorLog.info(FileTransferServlet.class, fromClient);
+    	ManagerLog.info(FileTransferServlet.class, fromClient);
 		Map<String, String> options = StringUtils.makeOptions(fromClient);
 		String sQtFiles = options.get("qtFiles");
 		if (!StringUtils.isBlank(sQtFiles)) {
@@ -190,7 +190,7 @@ public class FileTransferServlet extends AbstractServlet<Void> {
 	}
     
     protected void readFileHeader(FileTransferTicketsStatus wftpStatus, String fromClient) throws IOException {
-    	GerenciadorLog.info(FileTransferServlet.class, fromClient);
+    	ManagerLog.info(FileTransferServlet.class, fromClient);
 		Map<String, String> options = StringUtils.makeOptions(fromClient);
 		String fileName = options.get("fileName");
 		if (!StringUtils.isBlank(fileName)) {
@@ -249,10 +249,10 @@ public class FileTransferServlet extends AbstractServlet<Void> {
 			preExecute(request, response);
 			executeWebClassSpring(request, response, wftpStatus.getWebClassId(), "importarArquivo");
 		} catch (UserException e) {
-			GerenciadorLog.error(FileTransferServlet.class, e);
+			ManagerLog.error(FileTransferServlet.class, e);
 		} catch (Exception e) {
-			String message = GerenciadorMensagem.getMessage(GerenciadorMensagem.ERRO_GERAL);
-			GerenciadorLog.error(FileTransferServlet.class, e, message);
+			String message = ManagerMessage.getMessage(ManagerMessage.ERRO_GERAL);
+			ManagerLog.error(FileTransferServlet.class, e, message);
 		} finally {
 			posExecute(request, response);
 		}

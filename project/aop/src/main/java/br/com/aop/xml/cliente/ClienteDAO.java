@@ -4,7 +4,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import spring.corp.framework.exceptions.UserException;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.i18n.ManagerMessage;
 
 public class ClienteDAO implements IClienteDAO {
 
@@ -17,7 +17,7 @@ public class ClienteDAO implements IClienteDAO {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void error() throws Throwable {
-		String mesagem =  GerenciadorMensagem.getMessage(GerenciadorMensagem.ERRO_GERAL);
+		String mesagem =  ManagerMessage.getMessage(ManagerMessage.ERRO_GERAL);
 		throw new UserException(mesagem);
 	}
 	

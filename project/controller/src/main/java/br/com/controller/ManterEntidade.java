@@ -8,7 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import spring.corp.framework.exceptions.UserLinkException;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.json.Consequence;
 import spring.corp.framework.json.JSONReturn;
 import spring.corp.framework.utils.DateUtils;
@@ -51,7 +51,7 @@ public class ManterEntidade {
 								try {
 									Integer data = DateUtils.stringToInteger(value, "dd/MM/yyyy");
 									if (data < 19900623 || 20150529 < data) {
-										String message = GerenciadorMensagem.getMessage("framework.utils.min.between.max", "Calendar", "23/06/1990", "29/05/2015");
+										String message = ManagerMessage.getMessage("framework.utils.min.between.max", "Calendar", "23/06/1990", "29/05/2015");
 										throw new UserLinkException(name, message);
 									}
 								} catch (ParseException e) {
@@ -68,7 +68,7 @@ public class ManterEntidade {
 						public void validate(String name, String value) throws UserLinkException {
 							if (value != null) {
 								if (value.length() != 2 && value.length() != 8) {
-									String message = GerenciadorMensagem.getMessage("Valor do NCM inv\u00e1lido o campo deve conter 2 ou 8 d\u00edgitos.");
+									String message = ManagerMessage.getMessage("Valor do NCM inv\u00e1lido o campo deve conter 2 ou 8 d\u00edgitos.");
 									throw new UserLinkException(name, message);
 								}
 							}	

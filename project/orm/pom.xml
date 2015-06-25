@@ -17,4 +17,16 @@
 		<spring.main.version>2.5.6</spring.main.version>
 		<spring.security.version>3.0.0.M1</spring.security.version>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+	</dependencies>
 </project>

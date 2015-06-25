@@ -12,7 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import spring.corp.framework.exceptions.UserException;
-import spring.corp.framework.i18n.GerenciadorMensagem;
+import spring.corp.framework.i18n.ManagerMessage;
 import spring.corp.framework.security.EmailHolder;
 import spring.corp.framework.security.IdHolder;
 import spring.corp.framework.security.NameHolder;
@@ -33,7 +33,7 @@ public class ProcessRequest<T> extends AbstractServlet<T> {
 		WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		Object webClass = webApplicationContext.getBean(webClassId);
 		if (webClass == null) {
-			String message = GerenciadorMensagem.getMessage("view.webclassid.invalido", new Object[] { webClassId });
+			String message = ManagerMessage.getMessage("view.webclassid.invalido", new Object[] { webClassId });
 			throw new UserException(message);
 		}
 		return executeWebClass(request, response, webClass, invoke);

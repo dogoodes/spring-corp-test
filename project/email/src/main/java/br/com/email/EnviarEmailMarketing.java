@@ -6,20 +6,20 @@ import java.util.Map;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import spring.corp.framework.configuracao.GerenciadorConfiguracao;
-import spring.corp.framework.email.GerenciadorEmail;
+import spring.corp.framework.configuracao.ManagerSetting;
+import spring.corp.framework.email.ManagerEmail;
 import spring.corp.framework.io.SerializableInputStream;
 import spring.corp.framework.json.Consequence;
 import spring.corp.framework.json.JSONFileAttachment;
 import spring.corp.framework.json.JSONReturn;
-import spring.corp.framework.log.GerenciadorLog;
+import spring.corp.framework.log.ManagerLog;
 import spring.corp.framework.utils.StringUtils;
 import spring.corp.framework.view.GerenciadorUpload;
 
 public class EnviarEmailMarketing {
 
 	public JSONReturn enviarEmailMarketing(ServletRequest request, ServletResponse response) {
-		GerenciadorLog.debug(EnviarEmailMarketing.class, ("Enviando Email Marketing"));
+		ManagerLog.debug(EnviarEmailMarketing.class, ("Enviando Email Marketing"));
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		String assunto = request.getParameter("assunto");
@@ -43,11 +43,11 @@ public class EnviarEmailMarketing {
 				htmlSend = html.replaceAll("\n", "");
 			}
 			
-			String nameSender = GerenciadorConfiguracao.getConfiguracao("name.user");
-			String sender = GerenciadorConfiguracao.getConfiguracao("mail.user");
+			String nameSender = ManagerSetting.getSetting("name.user");
+			String sender = ManagerSetting.getSetting("mail.user");
 			Map<String, String> recipients = new HashMap<String, String>();
 			recipients.put(email, nome);
-			GerenciadorEmail ge = GerenciadorEmail.builderInstance()
+			ManagerEmail ge = ManagerEmail.builderInstance()
 				.recipients(recipients)
 				.subject(assunto)
 				.html(htmlSend)
