@@ -120,6 +120,45 @@
 		</dependency>
 		
 		<!-- Modulos do sitema -->
-		
+		<dependency>
+			<groupId>springcorp.test.aop</groupId>
+			<artifactId>aop</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.cep</groupId>
+			<artifactId>cep</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.controller</groupId>
+			<artifactId>controller</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.csv</groupId>
+			<artifactId>csv</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.email</groupId>
+			<artifactId>email</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.orm</groupId>
+			<artifactId>orm</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.threadlocal</groupId>
+			<artifactId>thread-local</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>springcorp.test.upload</groupId>
+			<artifactId>upload</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
