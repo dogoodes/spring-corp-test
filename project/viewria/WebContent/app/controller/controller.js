@@ -15,7 +15,7 @@ jQuery.controller = function() {
 			$("#manterEntidade").ajaxSubmit({
 				url : systemURL,
 				dataType : "json",
-				success : function(jsonReturn){
+				success : (function(jsonReturn){
 					var consequence = jsonReturn.consequence;
 					if (consequence == "ERRO") {
 						alert(jsonReturn.message);
@@ -29,7 +29,10 @@ jQuery.controller = function() {
 						alert(mensagem.join(''));
 					}
 					//location.reload();
-				}
+				}),
+				error : (function(XMLHttpRequest, textStatus, errorThrown){
+					alert(errorConexao);
+				})
 			});
 		});
 		

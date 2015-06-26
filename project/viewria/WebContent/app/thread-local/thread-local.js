@@ -30,7 +30,7 @@ jQuery.threadLocal = function() {
 			$("#threadLocal").ajaxSubmit({
 				url : systemURL,
 				dataType : "json",
-				success : function(jsonReturn){
+				success : (function(jsonReturn){
 					var consequence = jsonReturn.consequence;
 					if (consequence == "ERRO") {
 						alert(jsonReturn.message);
@@ -43,7 +43,10 @@ jQuery.threadLocal = function() {
 						});
 						alert(mensagem.join(''));
 					}
-				}
+				}),
+				error : (function(XMLHttpRequest, textStatus, errorThrown){
+					alert(errorConexao);
+				})
 			});
 		});
 		

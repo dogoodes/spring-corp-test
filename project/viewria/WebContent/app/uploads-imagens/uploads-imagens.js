@@ -88,8 +88,8 @@ jQuery.uploadsImagens = function() {
 									alert(jsonReturn.message);
 								}
 							},
-							error: (function(XMLHttpRequest, textStatus, errorThrown){
-								alert("Algo aconteceu com sua conex\u00e3o! Verifique se voc\u00ea continua tendo acesso a internet e tente novamente mais tarde.");
+							error : (function(XMLHttpRequest, textStatus, errorThrown){
+								alert(errorConexao);
 							})
 						});
 					}, 'html');

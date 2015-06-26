@@ -15,7 +15,7 @@ jQuery.buscarCep = function() {
 			$("#buscarCep").ajaxSubmit({
 				url : systemURL,
 				dataType : "json",
-				success : function(jsonReturn){
+				success : (function(jsonReturn){
 					var consequence = jsonReturn.consequence;
 					if (consequence == "ERRO") {
 						alert(jsonReturn.message);
@@ -37,7 +37,10 @@ jQuery.buscarCep = function() {
 						});
 						alert(mensagem.join(''));
 					}
-				}
+				}),
+				error : (function(XMLHttpRequest, textStatus, errorThrown){
+					alert(errorConexao);
+				})
 			});
 		});
 		
