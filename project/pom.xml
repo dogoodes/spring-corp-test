@@ -94,5 +94,7 @@
 		<module>thread-local</module>
 		<module>upload</module>
 		<module>viewria</module>
+		<module>ws</module>
+		<module>bindings</module>
 	</modules>
 </project>
