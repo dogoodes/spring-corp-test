@@ -3,7 +3,7 @@ var contextServlet = "/viewria/";
 
 var systemURL= contextServlet + "servlet/servlet.app";
 var uplURL = contextServlet + "servlet/upload.app";
-var attURL = contextServlet + "servlet/attachment.erp";
+var attURL = contextServlet + "servlet/attachment.app";
 
 var errorConexao = "Algo aconteceu com sua conex\u00e3o! Verifique se voc\u00ea continua tendo acesso a internet e tente novamente mais tarde.";
 
