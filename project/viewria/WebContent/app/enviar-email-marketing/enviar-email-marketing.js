@@ -16,11 +16,11 @@ jQuery.enviarEmailMarketing = function() {
 			});
 			
 			$("#enviar").click(function() {
-				var html = $("#html").val();
+				var html = $("#arquivo").val();
 				if (html != null && html != "") {
-					_self.enviar();
-				} else {
 					_self.enviarComHtmlAnexado();
+				} else {
+					_self.enviar();
 				}
 				return false; 
 			});
