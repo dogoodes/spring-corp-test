@@ -32,29 +32,35 @@ jQuery.aop = function() {
 		});
 		
 		this.manterCliente = (function(acao) {
-			$("#manterCliente").ajaxSubmit({
-				url : systemURL,
-				dataType : "json",
-				data : ({acao : acao}),
-				success : (function(jsonReturn) {
-					var consequence = jsonReturn.consequence;
-					if (consequence == "ERRO") {
-						alert(jsonReturn.message);
-					} else if (consequence == "SUCESSO") {
-						alert(jsonReturn.message);
-					} else if(consequence == "MUITOS_ERROS"){
-						var mensagem = [''];
-						jQuery.each(jsonReturn.dado, function(i, dado) {
-							mensagem.push(dado.localizedMessage + "\n");
-						});
-						alert(mensagem.join(''));
-					}
-					location.reload();
-				}),
-				error: (function(XMLHttpRequest, textStatus, errorThrown){
-					alert(errorConexao);
-				})
-			});
+			var codigo = $("#codigo").val();
+			var nome = $("#nome").val();
+			if ((acao == "inserir" || acao == "atualizar" || acao == "excluir") && (codigo == null || codigo == "" || nome == null || nome == "")) {
+				alert("Preencha os campos acima");
+			} else {
+				$("#manterCliente").ajaxSubmit({
+					url : systemURL,
+					dataType : "json",
+					data : ({acao : acao}),
+					success : (function(jsonReturn) {
+						var consequence = jsonReturn.consequence;
+						if (consequence == "ERRO") {
+							alert(jsonReturn.message);
+						} else if (consequence == "SUCESSO") {
+							alert(jsonReturn.message);
+						} else if(consequence == "MUITOS_ERROS"){
+							var mensagem = [''];
+							jQuery.each(jsonReturn.dado, function(i, dado) {
+								mensagem.push(dado.localizedMessage + "\n");
+							});
+							alert(mensagem.join(''));
+						}
+						location.reload();
+					}),
+					error: (function(XMLHttpRequest, textStatus, errorThrown){
+						alert(errorConexao);
+					})
+				});
+			}
 		});
 		
 		var _self = this;

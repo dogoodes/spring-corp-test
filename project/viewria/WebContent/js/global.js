@@ -1,5 +1,5 @@
-var context ="/utils-viewria/";
-var contextServlet = "/utils-viewria/"; 
+var context ="/viewria/";
+var contextServlet = "/viewria/"; 
 
 var systemURL= contextServlet + "servlet/servlet.app";
 var uplURL = contextServlet + "servlet/upload.app";
