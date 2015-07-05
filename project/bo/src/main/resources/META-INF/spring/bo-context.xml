@@ -5,13 +5,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
 
-	<bean id="dao" class="br.com.dao.DAO" />
-	<bean id="bo" class="br.com.dao.BO">
-		<property name="dao" ref="dao" />
-	</bean>
+	<bean id="daoorm" class="br.com.dao.DAOorm" />
+	<bean id="daoentityOneToOne" class="br.com.dao.DAOentityOneToOne" />
+	<bean id="daoentityOneToMany" class="br.com.dao.DAOentityOneToMany" />
 	
-	<bean id="usuarioDAO" class="br.com.dao.usuario.UsuarioDAO" />
-	<bean id="usuarioBO" class="br.com.dao.usuario.UsuarioBO">
-		<property name="usuarioDAO" ref="usuarioDAO" />
+	<bean id="boorm" class="br.com.bo.BOorm">
+		<property name="daoorm" ref="daoorm" />
+		<property name="daoentityOneToOne" ref="daoentityOneToOne" />
+		<property name="daoentityOneToMany" ref="daoentityOneToMany" />
 	</bean>
 </beans>

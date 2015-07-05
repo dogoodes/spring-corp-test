@@ -126,6 +126,11 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>springcorp.test.bo</groupId>
+			<artifactId>bo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>springcorp.test.cep</groupId>
 			<artifactId>cep</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

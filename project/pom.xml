@@ -96,5 +96,6 @@
 		<module>viewria</module>
 		<module>ws</module>
 		<module>bindings</module>
+		<module>orm-test</module>
 	</modules>
 </project>
